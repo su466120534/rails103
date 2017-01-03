@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
- before_filter :authenticate_user!, :only=> [:new,create]
+ before_filter :authenticate_user!, :only=> [:new, :create]
 
   def new
     @group = Group.find(params[:group_id])
@@ -20,6 +20,8 @@ class PostsController < ApplicationController
      end
    end
 
+
+
    def edit
      @group = Group.find(params[:group_id])
      @post = Post.find([:id])
@@ -37,11 +39,11 @@ class PostsController < ApplicationController
 
    def destroy
      @group = Group.find(params[:group_id])
-     @post = Post.find([:id])
+     @post = Post.find(params[:id])
 
-     @post.destory
+     @post.destroy
      flash[:alert] = 'Post deleted'
-     redirect_to accunt_post_path
+     redirect_to account_post_path
    end
 
    private
